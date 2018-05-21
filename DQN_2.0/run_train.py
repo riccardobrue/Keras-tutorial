@@ -57,16 +57,18 @@ def run():
             observation_, traveled_distance, done, partial_distance = sendAction(s, action, s.recv(1024))
 
             # calculate reward with a single sensor in front
-            reward = partial_distance * (observation_ / 16)
             if done:
-                reward -= 200
-            elif partial_distance == 0 and prev == 0:
+                reward = -200
+            else:
+                reward = partial_distance
+
+            if reward == 0 and prev == 0:
                 zero_counters += 1
             elif prev == 0:
                 zero_counters = 0
 
             if zero_counters <= 4 and not done:
-                reward *= 20
+                reward *= observation_
 
             print(reward, " _ sensor_distance: ", observation_, "(", zero_counters, ")")
 
@@ -111,5 +113,5 @@ if __name__ == "__main__":
                       # output_graph=True
                       )
     run()
-    RL.store_params()
+    #RL.store_params()
     RL.plot_cost()

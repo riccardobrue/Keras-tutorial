@@ -1,0 +1,2 @@
+model_checkpoint_path: "C:\\Users\\brux9\\Google Drive\\Workspace\\Machine Learning\\Keras tutorial\\DQN_2.0/my_net_temp/save_net.ckpt"
+all_model_checkpoint_paths: "C:\\Users\\brux9\\Google Drive\\Workspace\\Machine Learning\\Keras tutorial\\DQN_2.0/my_net_temp/save_net.ckpt"
