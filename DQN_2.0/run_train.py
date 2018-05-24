@@ -76,8 +76,10 @@ def run():
 
             RL.store_transition(observation, action, reward, observation_)
 
+            """
             if (step > 100) and (step % 5 == 0):
                 RL.learn()
+            """
 
             # swap observation
             observation = observation_
@@ -86,9 +88,10 @@ def run():
             if done:
                 break
             step += 1
-
+        """
         if episode % 20 == 0:
             RL.store_params_temp()
+        """
     # end of game
     print('Game over')
 
@@ -106,12 +109,12 @@ if __name__ == "__main__":
     RL = DeepQNetwork(nb_actions, nb_features,
                       learning_rate=0.01,
                       reward_decay=0.9,
-                      e_greedy=0.9,
+                      # e_greedy=0.9, #90% chooses the best action
                       replace_target_iter=100,
                       memory_size=2000,
                       restore=True
                       # output_graph=True
                       )
     run()
-    #RL.store_params()
+    # RL.store_params()
     RL.plot_cost()
